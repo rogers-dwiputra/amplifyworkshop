@@ -9,7 +9,6 @@ export default function Home({ breeds = [] }) {
   const [breedList, setBreedList] = useState([]);
 
   useEffect(() => {
-    setBreedList(Object.keys(breeds));
   }, []);
 
   return (
@@ -41,15 +40,4 @@ export default function Home({ breeds = [] }) {
       </main>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const url = "https://dog.ceo/api/breeds/list/all";
-  const res = await fetch(url);
-  const data = await res.json();
-  const breeds = data.message;
-
-  return {
-    props: { breeds },
-  };
 }
